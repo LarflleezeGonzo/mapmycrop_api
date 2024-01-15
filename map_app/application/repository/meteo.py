@@ -5,7 +5,7 @@ from fastapi import HTTPException
 async def call_meteo_api(
     latitude: float, longitude: float, number_of_days: int
 ) -> List[dict]:
-    api_url=f"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&past_days={number_of_days}&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m"
+    api_url=f"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&past_days={number_of_days}&hourly=temperature_2m,precipitation,cloud_cover"
     async with httpx.AsyncClient() as client:
         response = await client.get(api_url)
 
